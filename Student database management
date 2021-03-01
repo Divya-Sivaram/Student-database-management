@@ -1,0 +1,174 @@
+import java.io.*;
+import java.util.*;
+class Student
+{
+    String name,class1,door_no,street,city,state;
+    int age;
+    Student(String name,String class1, String door_no,String street, String city,String state,int age)
+    {
+        this.name=name;
+        this.age=age;
+        this.class1=class1;
+        this.door_no=door_no;
+        this.street=street;
+        this.city=city;
+        this.state=state;
+    }
+}
+public class Fifth {
+    public static void main(String args[]) throws NullPointerException{
+        Student s1[] = new Student[100];
+
+        String name[] = new String[100];
+        String class1[] = new String[100];
+        String door_no[] = new String[100];
+        String street[] = new String[100];
+        String city[] = new String[100];
+        String state[] = new String[100];
+        int age[] = new int[100];
+
+        int choice;
+
+        int length;
+
+        int op1, op2,op3,op4;
+
+        String name1,class2;
+
+        Scanner s = new Scanner(System.in);
+        System.out.println("___________________________");
+        System.out.println("Student Database Management");
+        System.out.println("___________________________");
+        do {
+            System.out.println("1.Create Student\n2.Update Student\n3.Delete Student\n4.Search Student\n");
+            System.out.println("Enter Your choice\n");
+            choice = Integer.parseInt(s.nextLine());
+            switch (choice) {
+                case 1:
+                    System.out.println("Operation: Create student\n");
+                    create:
+                    for (int i = 0; i <= 100; i++) {
+                        System.out.println("Enter Student name:");
+                        name[i] = s.nextLine();
+                        System.out.println("Enter Student class");
+                        class1[i] = s.nextLine();
+                        System.out.println("Enter Student age:");
+                        age[i] = Integer.parseInt(s.nextLine());
+                        System.out.println("Enter Student address:");
+                        System.out.println("Door no:");
+                        door_no[i] = s.nextLine();
+                        System.out.println("Street:");
+                        street[i] = s.nextLine();
+                        System.out.println("City:");
+                        city[i] = s.nextLine();
+                        System.out.println("State:");
+                        state[i] = s.nextLine();
+                        s1[i] = new Student(name[i], class1[i], door_no[i], street[i], city[i], state[i], age[i]);
+                        System.out.println("Do you want to create more students?(1/2)");
+                        op1 = Integer.parseInt(s.nextLine());
+
+                        if (op1 == 1) {
+                            continue create;
+                        } else {
+                            break create;
+                        }
+                    }
+                    break;
+                case 2:
+                    System.out.println("Operation: Update student details\n");
+                    System.out.println("Enter the name you want to update\n");
+                    name1=s.nextLine();
+                    for(int i=0;i<100;i++)
+                    {
+                        if(name1.equals(name[i]))
+                        {
+                            System.out.println("Enter new values to update");
+
+                            System.out.println("Enter Student name:");
+                            name[i] = s.nextLine();
+                            System.out.println("Enter Student class");
+                            class1[i] = s.nextLine();
+                            System.out.println("Enter Student age:");
+                            age[i] = Integer.parseInt(s.nextLine());
+                            System.out.println("Enter Student address:");
+                            System.out.println("Door no:");
+                            door_no[i] = s.nextLine();
+                            System.out.println("Street:");
+                            street[i] = s.nextLine();
+                            System.out.println("City:");
+                            city[i] = s.nextLine();
+                            System.out.println("State:");
+                            state[i] = s.nextLine();
+                            s1[i] = new Student(name[i], class1[i], door_no[i], street[i], city[i], state[i], age[i]);
+
+                        }
+
+                    }
+                    break;
+
+                case 3:
+                    System.out.println("Operation: Delete student details\n");
+                    System.out.println("Enter the name you want to delete\n");
+                    name1=s.nextLine();
+                    for(int i=0;i<100;i++)
+                    {
+                        if(name1.equals(name[i]))
+                        {
+                            name[i]="";
+                            class1[i]="";
+                            age[i]=0;
+                            door_no[i]="";
+                            street[i]="";
+                            city[i]="";
+                            state[i]="";
+                            s1[i] = new Student(name[i], class1[i], door_no[i], street[i], city[i], state[i], age[i]);
+                            System.out.println("Data deleted");
+                        }
+                    }
+                    break;
+                case 4:
+                    System.out.println("Operation: Search student details\n");
+                    System.out.println("Do you want to search by name or class\n1.Name\n2.Class\n");
+                    op4=Integer.parseInt(s.nextLine());
+                    if(op4==1) {
+                        System.out.println("Enter the name you want to search\n");
+                        name1 = s.nextLine();
+                        for(int i=0;i<100;i++)
+                        {
+                            if(name1.equals(name[i]))
+                            {
+                                s1[i] = new Student(name[i], class1[i], door_no[i], street[i], city[i], state[i], age[i]);
+                                System.out.println("Name:" + s1[i].name);
+                                System.out.println("Age:" + s1[i].age);
+                                System.out.println("Class1:" + s1[i].class1);
+                                System.out.println("Address:" + s1[i].door_no + "\n" + s1[i].street + "\n" + s1[i].city + "\n" + s1[i].state + "\n");
+
+                            }
+                        }
+                    }
+                    else
+                    {
+                        System.out.println("Enter the class you want to search\n");
+                        class2 = s.nextLine();
+                        for(int i=0;i<100;i++)
+                        {
+                        if(class2.equals(class1[i]))
+                        {
+                            s1[i] = new Student(name[i], class1[i], door_no[i], street[i], city[i], state[i], age[i]);
+                            System.out.println("Name:" + s1[i].name);
+                            System.out.println("Age:" + s1[i].age);
+                            System.out.println("Class1:" + s1[i].class1);
+                            System.out.println("Address:" + s1[i].door_no + "\n" + s1[i].street + "\n" + s1[i].city + "\n" + s1[i].state + "\n");
+                        }
+                        }
+                    }
+                    break;
+                    }
+            System.out.println("Do you wish to do from first? (1/2)");
+            op3=Integer.parseInt(s.nextLine());
+
+        }while(op3==1);
+
+    }
+
+}
